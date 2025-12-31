@@ -1,0 +1,522 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Applied ONLY after step 0 */
+body.step-normal {
+  background: url('Heart\ background\ Pc.jpg') no-repeat center center;
+  background-size: cover;       /* fills the screen nicely */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;  /* needed for pseudo-element */
+  overflow: hidden;
+}
+
+/* Heart pattern overlay behind the card */
+body.step-normal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2); /* dark overlay for contrast */
+  z-index: -1;                 
+}
+
+/* Broken heart background for Step 99 */
+body.step-closed {
+  background: url('broken\ heart.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* BACKGROUND VIDEO */
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* CARD */
+/* CARD (default for all pages) */
+#card {
+  position: relative;
+  background: linear-gradient(
+    160deg,
+    rgba(255,240,246,.85),
+    rgba(255,255,255,.75)
+  );
+  backdrop-filter: blur(14px);
+
+  width: 90%;
+  max-width: 400px;
+
+  border-radius: 34px;
+  padding: 36px 26px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,.35);
+  z-index: 5;
+  display: none;
+}
+
+/* ONLY FOR LOVE LETTER PAGE */
+#card.wide-card {
+  width: calc(100vw - 64px); /* 32px margin each side */
+  max-width: 1400px;
+  margin: 0 auto; /* center the card */
+  height: auto;
+  max-height: calc(100vh - 32px);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+/* ONLY FOR LOVE LETTER PAGE */
+.wide-card {
+  width: min(85vw, 1100px);   /* wider */
+  height: 78vh;               /* shorter */
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+
+
+/* TEXT */
+h2 {
+  font-family: 'Playfair Display', serif;
+  color: #ff4f8b;
+}
+
+/* STEP 99 — BLOOD RED TEXT WITH GLOW */
+body.step-closed h2 {
+  color: #8b0000; /* deep blood red */
+  text-shadow:
+    0 0 6px rgba(139, 0, 0, 0.8),
+    0 0 14px rgba(178, 34, 34, 0.7),
+    0 0 24px rgba(255, 0, 0, 0.5);
+}
+
+/* STEP 2 — tighten text spacing */
+.step-2 h2 {
+  margin-top: 6px;
+}
+
+p {
+  color: #ff4f8b;
+}
+
+/* BUTTONS */
+button {
+  background: #ff4f8b;
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.secondary {
+  background: #ffd1e3;
+  color: #ff4f8b;
+}
+
+/* BUTTON ROW */
+.button-row {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* NEW YEAR POPUP */
+.newyear-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.newyear-card {
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.newyear-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+
+  /* ✨ GLOW EFFECT */
+  text-shadow:
+    0 0 6px rgba(255,105,180,0.6),
+    0 0 14px rgba(255,105,180,0.5),
+    0 0 24px rgba(255,105,180,0.4);
+}
+
+/* CAT */
+.newyear-cat-video {
+  width: 160px;
+  border-radius: 15px;
+  animation: popIn 0.45s ease-out forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  50% { transform: translateY(-12px); }
+}
+
+/* NEXT BUTTON */
+.newyear-btn {
+  position: absolute;
+  bottom: 50px;
+  background: #ff4f8b;
+  padding: 12px 30px;
+  border-radius: 30px;
+  color: #fff;
+}
+
+/* FADE TEXT */
+.text-fade {
+  animation: textFade .15s;
+}
+
+@keyframes textFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* CALM CARD */
+.calm-card {
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #ff4f8b;
+}
+
+/* HUG IMAGE */
+.hug {
+  width: 100px;   
+  max-width: 50%;       /* control size here */
+  margin: 0 auto 12px;  /* space below hug */
+}
+
+.hug img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ANGRY IMAGE (Step 99) */
+.angry-img {
+  width: 150px;          /* same as hug */
+  max-width: 50%;
+  margin: 0 auto 12px;
+}
+
+.angry-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* READY IMAGE (Step 2) */
+.ready {
+  width: 200px;          /* bigger than hug */
+  max-width: 50%;
+  margin: 0 auto 6px;
+}
+
+.ready img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* FIREWORK */
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   GIFTS PAGE (Step 3)
+========================= */
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 5px 0 10px;
+}
+
+.gift {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.gift:hover img{
+  transform: scale(1.08);
+}
+
+.gift img {
+  width: 150px;
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.gift p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ff4f8b;
+}
+
+.message-box {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0;
+  text-align: center;
+}
+
+/* =========================
+   NEXT BUTTON (GIFTS PAGE)
+========================= */
+.next-btn {
+  margin-top: 18px;
+}
+
+/* =========================
+   GIFT DETAIL PAGES
+   (Camera / Flowers / Playlist / Letter)
+========================= */
+.gift-page-img {
+  width: 180px;
+  max-width: 70%;
+  margin: 0 auto 14px;
+}
+
+.gift-page-img img {
+  max-width: 240px;
+  width: 100%;
+  display: block;
+  margin: 0 auto 16px;
+  border-radius: 18px;
+}
+
+
+
+/* Back button spacing for gift pages */
+.gift-back-btn {
+  margin-top: 16px;
+}
+
+/* ONLY FOR LOVE LETTER PAGE */
+/* Outer card container */
+.wide-card {
+  width: 90%;
+  max-width: 1100px;
+  margin: 16px auto;              
+  height: 80vh;               /* smaller than full screen */
+  display: flex;
+  flex-direction: row;            
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Letter layout container */
+.letter-layout {
+  display: flex;
+  gap: 24px;
+  align-items: stretch; /* 👈 makes both cards same height */
+}
+
+
+/* Scrollable letter card */
+.letter-card {
+  flex: 1;
+  padding: 87px;
+  text-align: center;
+  background: rgba(255,255,255,0.55);
+  box-shadow: inset 0 0 0 1px rgba(255,192,203,0.3);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100%;        /* do not exceed parent */
+}
+
+.step-letter .love-letter-card {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+
+  padding: 40px 56px;
+  border-radius: 26px;
+  font-family: 'Dancing Script', cursive;
+}
+
+
+/* Flower card */
+.flower-card {
+  flex: 1;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 100%;
+}
+
+.flower-card img {
+  max-height: 99%;
+  width: auto;
+  display: block;
+}
+
+.letter-card,
+.flower-card {
+  height: 100%;
+  border-radius: 20px;
+}
+
+
+.love-letter-card {
+  width: 100%;
+  max-height: 72vh;     /* slightly smaller than outer */
+  overflow-y: auto;
+
+  padding: 36px 48px;  /* more horizontal padding */
+  border-radius: 24px;
+
+  font-family: 'Dancing Script', cursive;
+}
+
+.letter-meta {
+  text-align: right;
+  font-size: 16px;
+  margin-bottom: 24px;
+  color: #ff4f8b;
+}
+
+.letter-content p {
+  font-size: 22px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.salutation {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.closing {
+  margin-top: 32px;
+  font-size: 24px;
+}
+
+.signature {
+  font-weight: 600;
+  color: #ff4f8b;
+}  
+
+/* STEP 13 — SPECIAL LOVE LETTER PAGE OUTER CARD */
+#card.special-letter-card {
+  width: 90%;           /* slightly smaller than full screen */
+  max-width: 1000px;    
+  height: auto;         /* adapt to inner card content */
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* STEP 13 — inner card smaller inside outer card */
+.love-letter-card.inner-step13 {
+  width: 85%;           /* smaller than outer card */
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto;
+  padding: 36px 50px;
+  overflow-y: auto;     /* scroll if content exceeds height */
+  box-sizing: border-box;
+}
+
+.countdown {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(160deg, #ffb6d5, #ffe6f0);
+  z-index: 9999;
+}
+
+.count-box {
+  background: rgba(255,255,255,0.9);
+  padding: 30px 36px;
+  border-radius: 26px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(255,79,139,.25);
+}
+
+.count-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: #ff4f8b;
+  margin-bottom: 16px;
+}
+
+.timer {
+  font-size: 28px;
+  color: #ff2f7a;
+  letter-spacing: 2px;
+}
