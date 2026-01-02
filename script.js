@@ -1,3 +1,5 @@
+const card = document.getElementById("card");
+
 card.style.display = "block";
 let step = 0;
 let bgm;
