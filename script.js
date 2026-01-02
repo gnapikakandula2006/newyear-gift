@@ -1,6 +1,4 @@
 const card = document.getElementById("card");
-
-card.style.display = "block";
 let step = 0;
 let bgm;
 
@@ -517,6 +515,10 @@ function openSpotifyPlaylist() {
 function goToStep1() {
   document.querySelector(".newyear-popup")?.remove();
   document.querySelector(".bg-video")?.remove();
+  
+  document.body.className = "step-normal"; 
+  card.style.display = "block";              
+  
   step = 1;
   render();
 }
