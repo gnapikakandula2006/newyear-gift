@@ -6,6 +6,7 @@ let bgm;
    MAIN RENDER
 ========================= */
 function render() {
+  card.style.display = "block";   
   card.classList.remove("wide-card");
   /* STEP 0 — HAPPY NEW YEAR PAGE */
   if (step === 0) {
