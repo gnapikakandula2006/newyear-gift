@@ -489,34 +489,3 @@ button {
   overflow-y: auto;     /* scroll if content exceeds height */
   box-sizing: border-box;
 }
-
-.countdown {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(160deg, #ffb6d5, #ffe6f0);
-  z-index: 9999;
-}
-
-.count-box {
-  background: rgba(255,255,255,0.9);
-  padding: 30px 36px;
-  border-radius: 26px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(255,79,139,.25);
-}
-
-.count-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  color: #ff4f8b;
-  margin-bottom: 16px;
-}
-
-.timer {
-  font-size: 28px;
-  color: #ff2f7a;
-  letter-spacing: 2px;
-}

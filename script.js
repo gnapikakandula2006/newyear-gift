@@ -1,55 +1,6 @@
-const countdown = document.getElementById("countdown");
-const timer = document.getElementById("timer");
-const card = document.getElementById("card");
-
-card.style.display = "none";
+card.style.display = "block";
 let step = 0;
 let bgm;
-
-/* =========================
-   COUNTDOWN LOCK SCREEN
-========================= */
-/* 🎵 ticking sound */
-const tickSound = new Audio("tick.mp3");
-tickSound.loop = true;
-tickSound.volume = 0.2;
-tickSound.play().catch(() => {});
-
-const targetTime = new Date(
-  new Date().getFullYear() + 1, 0, 1, 0, 0, 0
-);
-
-let lastSecond = null;
-
-const countdownInterval = setInterval(() => {
-  const now = new Date();
-  const diff = targetTime - now;
-
-  if (diff <= 0) {
-    clearInterval(countdownInterval);
-
-    // unlock app
-    document.getElementById("countdown")?.remove();
-    card.style.display = "block";
-
-    render(); // 🔑 START APP ONLY HERE
-    return;
-  }
-
-  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const m = Math.floor((diff / (1000 * 60)) % 60);
-  const s = Math.floor((diff / 1000) % 60);
-
-  timer.textContent = `${d}d : ${h}h : ${m}m : ${s}s`;
-  
-/* 🔊 louder tick in last 10 seconds */
-  const secondsLeft = Math.floor(diff / 1000);
-  if (secondsLeft <= 10 && secondsLeft !== lastSecond) {
-    tickSound.volume = Math.min(1, 0.2 + (10 - secondsLeft) * 0.08);
-    lastSecond = secondsLeft;
-  }
-}, 1000);
 
 /* =========================
    MAIN RENDER
